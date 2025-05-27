@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEmester</title>
+<style>
+.grid-container {
+  display: grid;
+}
+
+.grid-item {  
+  display: flex; /* Activate flexbox for row content and search bar */
+  /* justify-content: space-between; Align items horizontally */
+  align-items: center; /* Align items vertically (optional) */
+}
+.row1{
+    display: flex;  /* Example: Make content in each row horizontally aligned */
+    text-align:center;  /* Example: Center content vertically in each row */
+    background-color: red;
+    width: 100%;
+    font-size: medium;
+    
+}
+.row2 , .row4{
+    display: flex;  /* Example: Make content in each row horizontally aligned */
+    text-align:center;  /* Example: Center content vertically in each row */
+    background-color:whitesmoke;
+    width: 100%;
+    font-size: medium;
+    
+}
+.row3{
+    display: flex;  /* Example: Make content in each row horizontally aligned */
+    text-align:center;  /* Example: Center content vertically in each row */
+    background-color:tomato;
+    width: 100%;
+    font-size: medium;
+    
+}
+
+.search-bar {
+  background-color: lightgray;
+  display:flex;
+}
+
+.search-bar input {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 0.5rem;
+}
+
+.search-bar button {
+  padding: 0.5rem;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer; /* Optional: Add cursor pointer for button hover effect */
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+  align-items: center;
+  color: white;
+  /* padding: 10px; */
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+.navigation li {
+  margin-right: 20px;
+}
+
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 2rem;
+}
+
+.sidebar {
+  background-color: #eee;
+  /* padding: 1rem; */
+}
+
+.sidebar h2 {
+  margin-bottom: 1rem;
+}
+
+.category-list {
+  list-style: none;
+  padding: 0;
+}
+
+.category-list li {
+  margin-bottom: 0.5rem;
+}
+
+.category-list a {
+  text-decoration: none;
+  color: #333;
+}
+
+.content {
+  background-color: #f5f5f5;
+  /* padding: 1rem; */
+}
+
+.content h2 {
+  margin-bottom: 1rem;
+}
+
+.featured-books,
+.new-arrivals {
+  /* Sections within the content area */
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.footer {
+  background-color: #ddd;
+  text-align: center;
+  padding: 1rem;
+}
+ .footer li{
+  list-style: none;
+  display: inline-block; /* Improved for single-line navigation */
+  border-right: 1px solid #ddd; /* Border for all items except last */
+  padding: 0.5rem 1rem;
+  
+ }
+
+       
+    </style>
+</head>
+<body>
+    
+    <div class="grid-container">
+        <div class="row1">
+            <p>Get Rs.500 Off on every purchase of. <a style="color: yellow;">Rs.5000 & Above !</a></p>
+        </div>
+
+        <div class="row2"> 
+            <div class="search-bar">
+                <input type="text" placeholder="Search">
+                <button type="button">Go</button>
+             </div>
+        </div>
+
+        <div class="row3">
+            <div class="logo-container">
+                <img src="https://www.libertybooks.com/image/cache/catalog/Shakir/libertybookslogo-250x67.png?q6" alt="Liberty Book Store Logo">
+              </div>
+        </div>
+        <div class="row4">
+            <nav class="navigation">
+                <ul>
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">Products</a></li>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Categories</a></li>
+                  
+              </nav>
+              
+        </div>
+        
+        <main class="main">
+            <aside class="sidebar">
+              <h2>Side Panel</h2>
+             
+            </aside>
+            <section class="content">
+              <div class="featured-books">
+                <h2>Featured Books</h2>
+                </div>
+              <div class="new-arrivals">
+                <h2>New Arrivals</h2>
+                </div>
+            </section>
+          </main>
+
+          <footer class="footer">
+            <p>Copyright © 2024, Liberty Books, All Rights Reserved.</p>
+          </footer>
+
+
+      </div>
+      
+    
+</body>
+</html>

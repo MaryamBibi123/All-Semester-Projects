@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Email and Password Validation</title>
+  <style>
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Sign Up</h2>
+  
+  <form id="signupForm" onsubmit="return validateForm()">
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required>
+    <span id="emailError" class="error"></span><br><br>
+    
+    <label for="password">Password:</label><br>
+    <input type="password" id="password" name="password" required>
+    <span id="passwordError" class="error"></span><br><br>
+    
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var emailError = document.getElementById("emailError");
+      var passwordError = document.getElementById("passwordError");
+      
+      // Regular expression for email validation
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      
+      // Regular expression for password validation (at least 8 characters including at least one uppercase letter, one lowercase letter, and one digit)
+      var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+      
+      // Validate email
+      if (!emailRegex.test(email)) {
+        emailError.textContent = "Invalid email format";
+        return false;
+      } else {
+        emailError.textContent = "";
+      }
+      
+      // Validate password
+      if (!passwordRegex.test(password)) {
+        passwordError.textContent = "Password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one digit";
+        return false;
+      } else {
+        passwordError.textContent = "";
+      }
+      
+      // Form is valid
+      return true;
+    }
+  </script>
+</body>
+</html>

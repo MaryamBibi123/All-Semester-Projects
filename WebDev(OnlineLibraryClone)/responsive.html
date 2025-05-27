@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Table Layout with Borders</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom CSS for borders */
+    .custom-border {
+      border: 1px solid #ddd; /* Gray border */
+      padding: 10px; /* Padding to create space */
+      margin-bottom: 10px; /* Margin bottom for spacing between rows */
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="row ">
+    <!-- Row 1: 9 columns and 3 columns -->
+    <div class="col-md-9 border">
+      <p>Row 1, Column 1 (9 columns)</p>
+    </div>
+    <div class="col-md-3 border">
+      <p>Row 1, Column 2 (3 columns)</p>
+    </div>
+  </div>
+
+  <div class="row ">
+    <!-- Row 2: 3 columns each (2 columns each) and 1 column (6 columns) -->
+    <div class="col-md-2 border">
+      <p>Row 2, Column 1 (2 columns)</p>
+    </div>
+    <div class="col-md-2 border">
+      <p>Row 2, Column 2 (2 columns)</p>
+    </div>
+    <div class="col-md-2 border">
+      <p>Row 2, Column 3 (2 columns)</p>
+    </div>
+    <div class="col-md-6 border">
+      <p>Row 2, Column 4 (6 columns)</p>
+    </div>
+  </div>
+
+  <div class="row ">
+    <!-- Row 3: 4 columns (4 columns, 6 columns, 1 column each) -->
+    <div class="col-md-4 border">
+      <p>Row 3, Column 1 (4 columns)</p>
+    </div>
+    <div class="col-md-6 border">
+      <p>Row 3, Column 2 (6 columns)</p>
+    </div>
+    <div class="col-md-1 border">
+      <p>Row 3, Column 3 (1 column)</p>
+    </div>
+    <div class="col-md-1 border">
+      <p>Row 3, Column 4 (1 column)</p>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (for example, for dropdowns, modals, etc.) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

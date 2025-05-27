@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liberty Books Home Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         body {
+            position: relative;
+            background-color: #f0f0f0;
+        }
+
+        /* 1st Row: Free Shipping Promo */
+        .promo-row {
+            background-color: rgb(187, 19, 19);
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            padding: 30px;
+            /* padding-bottom: 10px; */
+
+        }
+        .info-section .row .icons ul li {
+            padding: 20px;
+            }
+        .promo-row span {
+            font-weight: bold;
+            color: yellow;
+        }
+
+        .promo-row a {
+            background-color: orange;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: white;
+            text-decoration: none;
+        }
+
+        /* 2nd Row: Contact and Language */
+        .contact-row {
+            background-color: gray;
+            color: white;
+            padding: 10px 0;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .contact-info div {
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info div img {
+            margin-left: 10px;
+        }
+
+        /* 3rd Row: Header with Logo, Search, Cart, and Signin */
+        .header-row {
+            padding: 10px 10px;
+            background-color: rgb(187, 19, 19);
+        }
+
+        .header-row .col {
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 4th Row: Navigation */
+        .nav-row {
+            padding: 10px;
+            background-color: rgb(203, 124, 181);
+            column-gap: 5px;
+        }
+
+        .nav-row .col {
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-row a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-row .nav-item {
+            position: relative;
+            padding: 10px 15px;
+        }
+
+        .nav-row .nav-item::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 50%;
+            border-right: 1px solid #ccc;
+        }
+
+        .nav-row .nav-item:last-child::after {
+            display: none;
+        }
+
+        /* Styles for sidebar */
+        .offcanvas {
+            width: 250px;
+        }
+
+        .category-heading {
+            background-color: white;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .category-item {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .btn-primary {
+            justify-content: center;
+        }
+
+        /* 5th Row: Carousel */
+        .carousel-row {
+            background-color: brown;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(96, 21, 21);
+            font-size: 24px;
+        }
+
+        .carousel-container {
+            padding: 20px;
+        }
+
+        .carousel {
+            background-color: rgb(187, 19, 19);
+            border-radius: 10px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .icon-container {
+            text-align: center;
+            /* border: 0px solid #ccc; */
+            border-radius: 10px;
+            padding: 10px;
+            margin: 20px;
+        }
+
+        .icon-container img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .icon-container a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: black;
+            padding-left: 20px;
+        }
+
+        /* Book Sections (Book Bazaar, New Arrivals, Recently Added) */
+        .book-section {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .book-section h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .book-section .row {
+            margin-top: 20px;
+        }
+
+        .book-card {
+            background-color: #dfd9d9;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .book-card img {
+            width: 50%;
+            border-radius: 10px;
+        }
+
+        .book-card .content {
+            padding-left: 20px;
+            width: 50%;
+        }
+
+        .book-card h2 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .book-card p {
+            font-size: 14px;
+        }
+
+        .book-card button {
+            margin-top: 10px;
+        }
+
+        .book-section .view-all {
+            float: right;
+            background-color: brown;
+            border-radius: 5px;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .footer-row {
+            margin-top: 20px;
+            height: 100px;
+            background-color: black;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Section 8: Information */
+        .info-section {
+            background-color: black;
+            color: white;
+            padding: 20px 0;
+        }
+
+        .info-section .column-title {
+            color:  rgb(187, 19, 19);
+            font-weight: bold;
+        }
+
+        .info-section a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin: 5px 0;
+        }
+
+        .info-section a:hover {
+            text-decoration: underline;
+        }
+
+        .info-section .social-icons a {
+            color: rgb(187, 19, 19);
+            margin-right: 10px;
+            font-size: 20px;
+        }
+
+        /* Section 9: Copyright */
+        .copyright-section {
+            background-color:  rgb(187, 19, 19);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        /* Section 10: Subscribe */
+        .subscribe-section {
+            background: url('https://via.placeholder.com/1200x300') no-repeat center center/cover;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .subscribe-section .input-group {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .subscribe-section input[type="email"] {
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+        }
+
+        .subscribe-section button {
+            background-color: brown;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            color: white;
+        }
+
+        /* Section 11: Request Now */
+        .request-section {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .request-section h2 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .request-section button {
+            background-color: brown;
+            color: white;
+            border-radius: 20px;
+            padding: 10px 20px;
+            border: none;
+        }
+
+        /* Section 12: Dynamic Text */
+        .dynamic-text-section {
+            background-color: green;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 24px;
+            overflow: hidden;
+            position: relative;
+            height: 50px;
+        }
+
+        .dynamic-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: slide 10s linear infinite;
+            position: absolute;
+            top: 0;
+            left: 100%;
+        }
+
+        @keyframes slide {
+            0% {
+                left: 100%;
+            }
+
+            50% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+        </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <!-- 1. Free Shipping Promo -->
+        <div class="row promo-row">
+            <div class="col text-center">FREE SHIPPING on all orders of <span>PKR 4000 and above</span> 
+                <a href="#" >Use Promo Code: FS4K</a>
+            </div>
+        </div>
+       <!-- 2. Contact and Language -->
+<div class="row contact-row" style="background-color: white; ">
+    <div class="col-12">
+        <div class="contact-info container d-flex justify-content-between align-items-center">
+            <div class="d-flex align-items-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/455/455705.png" alt="phone icon" width="20" style="margin-right: 5px;">
+                <span style="color: black; ">03111444282</span>
+                <span  style="margin-left: 15px;color: black;">
+                    <img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="email icon" width="20" style="margin-right: 5px;">
+                    query@libertybooks.com
+                </span>
+            </div>
+            <div class="d-flex align-items-center">
+                <select class="form-select" style="width: auto; margin-right: 10px;">
+                    <option selected>Select Language</option>
+                    <option value="en">English</option>
+                    <option value="ur">Urdu</option>
+                    <option value="ar">Arabic</option>
+                    <!-- Add more languages as needed -->
+                </select>
+                <img src="https://cdn-icons-png.flaticon.com/512/555/555417.png" alt="flag" width="20">
+            </div>
+        </div>
+    </div>
+</div>
+
+     <!-- 3. Header with Logo, Search, Cart, and Signin -->
+<div class="container-fluid header-row" style="background-color: rgb(187, 19, 19);">
+    <div class="row align-items-center">
+        <!-- Liberty Books -->
+        <div class="col-lg-2 col-md-3 col-sm-4 col-4 d-flex align-items-center">
+            <img src="piclogo.jpg" alt="book icon" width="30" class="me-2">
+            <span style="font-weight: bold; font-size: 1.5em; color: white;">Liberty Books</span>
+        </div>
+        <!-- Search Bar (hidden on small and medium screens) -->
+        <div class="col-lg-4 offset-lg-1 d-none d-lg-flex align-items-center">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search By Title, Author, Publisher or ISBN">
+                <span class="input-group-text">
+                    <img src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="search icon" width="20">
+                </span>
+            </div>
+        </div>
+        <!-- Cart Icon -->
+        <div class="col-lg-1 offset-lg-2 col-md-2 col-sm-2 col-4 d-flex ">
+            <a href="#" class="d-flex align-items-center" style="color: white; margin-left: 150px;">
+                <img src="https://cdn-icons-png.flaticon.com/512/34/34568.png" alt="cart icon" width="20">
+            </a>
+        </div>
+        <!-- Signin -->
+        <div class="col-lg-2 col-md-2 col-sm-2 col-4 d-flex justify-content-center align-items-center">
+            <a href="#" class="d-flex align-items-center" style="color: white;">
+                <img src="https://cdn-icons-png.flaticon.com/512/456/456212.png" alt="signin icon" width="20" class="me-1">
+                Hello, Signin
+            </a>
+        </div>
+    </div>
+    <!-- Search Bar for smaller and medium screens -->
+    <div class="row d-lg-none">
+        <div class="col-12 d-flex align-items-center my-2 my-sm-0">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search By Title, Author, Publisher or ISBN">
+                <span class="input-group-text">
+                    <img src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="search icon" width="20">
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+     
+<!-- Navigation -->
+<div class="container-fluid nav-row d-none d-md-block" style="background-color: white;">
+    <div class="row justify-content-center text-center">
+        <div class="col-lg-auto col-md-4 col-sm-6 col-12 my-1 nav-item">
+            <a href="#" style="color: black; text-decoration: none;">Fiction</a>
+        </div>
+        <div class="col-lg-auto col-md-4 col-sm-6 col-12 my-1 nav-item">
+            <a href="#" style="color: black; text-decoration: none;">Non Fiction</a>
+        </div>
+        <div class="col-lg-auto col-md-4 col-sm-6 col-12 my-1 nav-item">
+            <a href="#" style="color: black; text-decoration: none;">Children's Books</a>
+        </div>
+        <div class="col-lg-auto col-md-4 col-sm-6 col-12 my-1 nav-item">
+            <a href="#" style="color: black; text-decoration: none;">Urdu</a>
+        </div>
+        <div class="col-lg-auto col-md-4 col-sm-6 col-12 my-1 nav-item">
+            <a href="#" style="color: black; text-decoration: none;">Send E-Gift Card</a>
+        </div>
+    </div>
+</div>
+
+<!-- Sidebar for small screens -->
+<div class="d-md-none text-center" style="background-color: bisque;" >
+    <button class="btn btn-primary " style="font-weight: bold;font-size: larger; color:black; border: white;border: radius 1000px;; background-color:rgb(182, 180, 178);"type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCategories" aria-controls="offcanvasCategories">
+        Categories
+    </button>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasCategories" aria-labelledby="offcanvasCategoriesLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasCategoriesLabel">Categories</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="category-heading">Categories</div>
+            <div class="category-item">
+                <a href="#">Fiction</a>
+                <i class="bi bi-chevron-right"></i>
+            </div>
+            <div class="category-item">
+                <a href="#">Non Fiction</a>
+                <i class="bi bi-chevron-right"></i>
+            </div>
+            <div class="category-item">
+                <a href="#">Children's Books</a>
+                <i class="bi bi-chevron-right"></i>
+            </div>
+            <div class="category-item">
+                <a href="#">Urdu</a>
+                <i class="bi bi-chevron-right"></i>
+            </div>
+            <div class="category-item">
+                <a href="#">Send E-Gift Card</a>
+                <i class="bi bi-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Bootstrap JS and icons -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+
+
+<!-- Add Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+<!-- 5. Carousel -->
+<div class="row carousel-row" style="margin-top: 20px;">
+    <div class="col-12" style="background-color: rgb(251, 251, 251);">
+       
+                
+<div id="carouselExampleIndicators" class="carousel slide carousel-row" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="pic1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="pic2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="pic3.jpg" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+          
+    </div>
+</div>
+
+
+<!-- 6. Big Icons with Tags -->
+<div class="row icons-row justify-content-center" style="margin-top: 20px;">
+    <div class="col-lg-1 col-md-3 col-sm-4">
+        <div class="icon-container">
+            <img src="pic11.png" alt="Moleskine">
+            <a href="#">Moleskine</a>
+        </div>
+    </div>
+    <div class="col-lg-1 col-md-3 col-sm-4">
+        <div class="icon-container">
+            <img src="pic12.png" alt="Trending Now">
+            <a href="#">Trending Now</a>
+        </div>
+    </div>
+    <div class="col-lg-1 col-md-3 col-sm-4">
+        <div class="icon-container">
+            <img src="pic13.png" alt="BookTok">
+            <a href="#">BookTok</a>
+        </div>
+    </div>
+    <div class="col-lg-1 col-md-3 col-sm-4">
+        <div class="icon-container">
+            <img src="pic14.png" alt="Gifts">
+            <a href="#">Gifts</a>
+        </div>
+    </div>
+    <div class="col-lg-1 col-md-3 col-sm-4">
+        <div class="icon-container">
+            <img src="pic15.jpg" alt="Puzzles & Games">
+            <a href="#">Puzzles & Games</a>
+        </div>
+    </div>
+    <div class="col-lg-1 col-md-3 col-sm-4">
+        <div class="icon-container">
+            <img src="pic16.jpg" alt="Flash Sale">
+            <a href="#">Flash Sale</a>
+        </div>
+    </div>
+    <div class="col-lg-1 col-md-3 col-sm-4">
+        <div class="icon-container">
+            <img src="pic17.jpg" alt="Top 100">
+            <a href="#">Top 100</a>
+        </div>
+    </div>
+    <div class="col-lg-1 col-md-3 col-sm-4">
+        <div class="icon-container">
+            <img src="pic18.jpeg" alt="Popular Series">
+            <a href="#">Popular Series</a>
+        </div>
+    </div>
+</div>
+
+        <!-- 7. Book Bazaar, New Arrivals, Recently Added -->
+        <div class="container-fluid book-section" style="margin-top: 20px;">
+            <div class="row">
+                <div class="col-12">
+                    <h1 style="float: left;">Book Bazaar Upto 80% Off</h1>
+                    <a href="#" class="btn btn-primary" style="float: right; margin-top: 20px; border-radius: 10px;">View All</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                    <div class="card" style="padding: 10px; background-color: white;">
+                        <div class="card-body" style="display: flex; ">
+                            <img src="1.jpg" alt="Book 1" style="width: 50%; height: 400PX; object-fit: cover;">
+                            <div style="padding: 0 10px;">
+                                <h5 class="card-title" style="font-size: 18px; margin-bottom: 10px;">Book 1</h5>
+                                <p class="card-text" style="font-size: 14px;">Book 1 Description</p>
+                                <button class="btn btn-primary" style="border-radius: 10px;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                    <div class="card" style="padding: 10px; background-color: white;">
+                        <div class="card-body" style="display: flex;">
+                            <img src="2.jpg" alt="Book 2" style="width: 50%; height: 400PX; object-fit: cover;">
+                            <div style="padding: 0 10px;">
+                                <h5 class="card-title" style="font-size: 18px; margin-bottom: 10px;">Book 2</h5>
+                                <p class="card-text" style="font-size: 14px;">Book 2 Description</p>
+                                <button class="btn btn-primary" style="border-radius: 10px;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                    <div class="card" style="padding: 10px; background-color: white;">
+                        <div class="card-body" style="display: flex;">
+                            <img src="3.jpg" alt="Book 3" style="width: 50%; height: 400PX; object-fit: cover;">
+                            <div style="padding: 0 10px;">
+                                <h5 class="card-title" style="font-size: 18px; margin-bottom: 10px;">Book 3</h5>
+                                <p class="card-text" style="font-size: 14px;">Book 3 Description</p>
+                                <button class="btn btn-primary" style="border-radius: 10px;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid book-section" style="margin-top: 20px;">
+            <div class="row">
+                <div class="col-12">
+                    <h1 style="float: left;">Recent Items</h1>
+                    <a href="#" class="btn btn-primary" style="float: right; margin-top: 20px; border-radius: 10px;">View All</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                    <div class="card" style="padding: 10px; background-color: white;">
+                        <div class="card-body" style="display: flex;">
+                            <img src="4.jpg" alt="Recent Item 1" style="width: 50%; height: 400PX; object-fit: cover;">
+                            <div style="padding: 0 10px;">
+                                <h5 class="card-title" style="font-size: 18px; margin-bottom: 10px;">Recent Item 1</h5>
+                                <p class="card-text" style="font-size: 14px;">Recent Item 1 Description</p>
+                                <button class="btn btn-primary" style="border-radius: 10px;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>  <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                    <div class="card" style="padding: 10px; background-color: white;">
+                        <div class="card-body" style="display: flex;">
+                            <img src="5.jpg" alt="Recent Item 1" style="width: 50%; height:400PX; object-fit: cover;">
+                            <div style="padding: 0 10px;">
+                                <h5 class="card-title" style="font-size: 18px; margin-bottom: 10px;">Recent Item 1</h5>
+                                <p class="card-text" style="font-size: 14px;">Recent Item 1 Description</p>
+                                <button class="btn btn-primary" style="border-radius: 10px;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>  <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                    <div class="card" style="padding: 10px; background-color: white;">
+                        <div class="card-body" style="display: flex;">
+                            <img src="1.jpg" alt="Recent Item 1" style="width: 50%; height: 400PX; object-fit: cover;">
+                            <div style="padding: 0 10px;">
+                                <h5 class="card-title" style="font-size: 18px; margin-bottom: 10px;">Recent Item 1</h5>
+                                <p class="card-text" style="font-size: 14px;">Recent Item 1 Description</p>
+                                <button class="btn btn-primary" style="border-radius: 10px;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more recent items here -->
+            </div>
+        </div>
+        
+        <div class="container-fluid book-section" style="margin-top: 20px;">
+            <div class="row">
+                <div class="col-12">
+                    <h1 style="float: left;">New Arrivals</h1>
+                    <a href="#" class="btn btn-primary" style="float: right; margin-top: 20px; border-radius: 10px;">View All</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                    <div class="card" style="padding: 10px; background-color: white;">
+                        <div class="card-body" style="display: flex;">
+                            <img src="3.jpg" alt="New Arrival 1" style="width: 50%; height: 400PX; object-fit: cover;">
+                            <div style="padding: 0 10px;">
+                                <h5 class="card-title" style="font-size: 18px; margin-bottom: 10px;">New Arrival 1</h5>
+                                <p class="card-text" style="font-size: 14px;">New Arrival 1 Description</p>
+                                <button class="btn btn-primary" style="border-radius: 10px;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                    <div class="card" style="padding: 10px; background-color: white;">
+                        <div class="card-body" style="display: flex;">
+                            <img src="6.jpg" alt="New Arrival 1" style="width: 50%; height: 400PX; object-fit: cover;">
+                            <div style="padding: 0 10px;">
+                                <h5 class="card-title" style="font-size: 18px; margin-bottom: 10px;">New Arrival 1</h5>
+                                <p class="card-text" style="font-size: 14px;">New Arrival 1 Description</p>
+                                <button class="btn btn-primary" style="border-radius: 10px;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="col-lg-4 col-md-6 col-sm-12" style="margin-bottom: 20px;">
+                    <div class="card" style="padding: 10px; background-color: white;">
+                        <div class="card-body" style="display: flex;">
+                            <img src="7.jpg" alt="New Arrival 1" style="width: 50%; height: 400PX; object-fit: cover;">
+                            <div style="padding: 0 10px;">
+                                <h5 class="card-title" style="font-size: 18px; margin-bottom: 10px;">New Arrival 1</h5>
+                                <p class="card-text" style="font-size: 14px;">New Arrival 1 Description</p>
+                                <button class="btn btn-primary" style="border-radius: 10px;">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more new arrivals here -->
+            </div>
+        </div>
+
+        <div class="container-fluid" style="margin-bottom: 30px;">
+            <div class="row" >
+                <div class="col-md-6 offset-md-3 col-sm-12 text-center" style="margin-top: 50px;">
+                    <h2 style="font-weight: bold;">Can't Find What You're Looking For?</h2>
+                    <button class="btn btn-primary" style="background-color: brown; border-radius: 20px; margin-top: 20px;">Request Now</button>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="container-fluid">
+            <div class="row looping-text-section" style="background-color: green; padding: 20px;">
+                <div class="col-md-12 text-center">
+                    <h2 id="changingText" style="color: white;"></h2>
+                </div>
+            </div>
+        </div>
+<script>
+    // Define an array of texts to loop through
+const texts = ["50,000+ BOOKS IN MANY CATEGORIES SERVING BOOK LOVERS SINCE 1952", "SERVING BOOK LOVERS SINCE 1952 50,000+ BOOKS IN MANY CATEGORIES",];
+let index = 0; // Start index
+
+// Function to change the text dynamically
+function changeText() {
+    document.getElementById("changingText").textContent = texts[index];
+    index = (index + 1) % texts.length; // Move to the next text, looping back to the start if necessary
+}
+
+// Call the changeText function every 3 seconds (adjust as needed)
+setInterval(changeText, 3000);
+
+</script>        
+
+
+        <div class="container-fluid">
+            <div class="row subscribe-section" style="background-color: rgb(173, 141, 142);background-image: url(cover.jpg); margin: 10px; padding: 90px; border-radius: 20px;">
+                <div class="col-md-6 offset-md-3 col-sm-12 text-center">
+                    <h3 style="color: white; margin-bottom: 30px;">Subscribe And Stay Updated On The Latest Books, Promotions And Events</h3>
+                    <div class="input-group mb-3" >
+                        <input type="email" class="form-control" placeholder="Enter your email" aria-label="Enter your email" aria-describedby="basic-addon2">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+
+                <!-- Footer -->
+       <!-- Section 8: Information -->
+<div class="container-fluid info-section" style="background-color: black; color: white; padding: 20px;">
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <h4 style="color: red;">Information</h4>
+            <ul style="list-style: none; padding-left: 0;">
+                <li><a href="#" style="color: white;">Covid-19: Delivery & Safety</a></li>
+                <li><a href="#" style="color: white;">How to avail bank discounts</a></li>
+                <li><a href="#" style="color: white;">Privacy Policy</a></li>
+                <li><a href="#" style="color: white;">Returns and Exchange Policy</a></li>
+                <li><a href="#" style="color: white;">About Us</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <h4 style="color: red;">New Features</h4>
+            <ul style="list-style: none; padding-left: 0;">
+                <li><a href="#" style="color: white;">Our Bookstores</a></li>
+                <li><a href="#" style="color: white;">Shipping & Delivery</a></li>
+                <li><a href="#" style="color: white;">Bulk order queries</a></li>
+                <li><a href="#" style="color: white;">Terms & Conditions</a></li>
+                <li><a href="#" style="color: white;">Careers</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <h4 style="color: red;">Customer Support</h4>
+            <ul style="list-style: none; padding-left: 0;">
+                <li><a href="#" style="color: white;">Returns</a></li>
+                <li><a href="#" style="color: white;">Contact Us</a></li>
+                <li><a href="#" style="color: white;">Site Map</a></li>
+                <li><a href="#" style="color: white;">Track Your Order</a></li>
+                <li><a href="#" style="color: white;">Track Requested Book</a></li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-12 icons">
+            <h4 style="color: red;">Help</h4>
+            <ul style="list-style: none; padding-left: 0; display:flex ;">
+                <li><a href="#" style="color: white;"><i class="fab fa-facebook"></i> </a></li>
+                <li><a href="#" style="color: white;"><i class="fab fa-twitter"></i> </a></li>
+                <li><a href="#" style="color: white;"><i class="fab fa-whatsapp"></i> </a></li>
+                <li><a href="#" style="color: white;"><i class="fab fa-instagram"></i> </a></li>
+            </ul>
+            <p style="color: white;">For complaints and feedback:<br> <a href="mailto:query@libertybooks.com" style="color: white;">query@libertybooks.com</a></p>
+        </div>
+    </div>
+</div>
+
+<!-- Section 9: Copyright -->
+<div class="container-fluid copyright-section" style="background-color: red; color: white; text-align: center; padding: 10px;">
+    Copyright © 2023, Liberty Books, All Rights Reserved.
+</div>
+
+    </div>
+</body>
+
+</html>
